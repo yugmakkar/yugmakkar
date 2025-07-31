@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3l6aXAxYXgxZDhnM2JnaHM5dzRhZDNpMTljaXBlbHowcml0eHMydyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4ilFRqgbzbx4c/giphy.gif" width="500" alt="A cool description of your GIF">
-</p>
-
 ## 🌐 Socials:
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/yugmakkar) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:yugmakkar2103@gmail.com) 
 
@@ -15,4 +11,6 @@
 ---
 [![](https://visitcount.itsvg.in/api?id=yugmakkar&icon=0&color=0)](https://visitcount.itsvg.in)
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+<p align="center">
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3l6aXAxYXgxZDhnM2JnaHM5dzRhZDNpMTljaXBlbHowcml0eHMydyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4ilFRqgbzbx4c/giphy.gif" width="500" alt="A cool description of your GIF">
+</p>
