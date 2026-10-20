@@ -38,7 +38,7 @@ $ sudo give_me_a_job
 > [sudo] password: *scroll down to the Contact section* 😏
 ```
 
-- 🔭 **I'm currently building** → a stock-forecasting web app and a university result-analytics engine (both live below 👇)
+- 🔭 **I'm currently building** → a stock-forecasting web app and a university result-analytics engine (both below 👇)
 - 🌱 **Always leveling up on** → system design, clean architecture, and writing code my future self won't curse at
 - 🧪 **My rule** → if it isn't tested, it isn't done
 - ⚡ **Fun fact** → I treat `README.md` like a front door — so I keep it swept, lit, and slightly chaotic
@@ -57,7 +57,7 @@ $ sudo give_me_a_job
 [![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://www.netlify.com)
 [![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com)
 
-_Tip: each badge opens the official site in a new tab. (You looked, didn't you.)_
+_Tip: each badge links to the official site. (You looked, didn't you.)_
 
 </div>
 
@@ -65,7 +65,7 @@ _Tip: each badge opens the official site in a new tab. (You looked, didn't you.)
 
 ## 🚀 Stuff I've actually built
 
-> Not slideware. Real repos, real tests, real deploys. Click in. 👀
+> Not slideware. Real repos, real tests, real code. Click in. 👀
 
 ### 📈 [Bharat Stock Predictor](https://github.com/yugmakkar/Stock-Market-Predictor)
 An educational forecasting tool for **NSE-listed Indian stocks** — all from **free public data, zero API keys, zero logins**.
@@ -73,11 +73,11 @@ An educational forecasting tool for **NSE-listed Indian stocks** — all from **
 - A **"why" panel** explaining every signal's contribution in plain English, plus an **honest walk-forward backtest** (spoiler: markets are basically a coin-flip, and it says so)
 - **Deterministic, pure, fully unit-tested** prediction engine — same input, same forecast, every time
 
-`Next.js 16` · `React 19` · `TypeScript` · `Tailwind CSS v4` · `Recharts` · `Vitest` · `Playwright` · deployed on **Vercel**
+`Next.js 16` · `React 19` · `TypeScript` · `Tailwind CSS v4` · `Recharts` · `Vitest` · `Playwright` · **Vercel**-ready (one-click deploy)
 
 ### 🎓 [GGSIPU Result Analysis & CGPA Calculator](https://github.com/yugmakkar/ggsipu-result-analysis)
-A full-stack engine that reads a university **result PDF**, extracts every subject's marks, and computes **SGPA / CGPA** plus subject-, college- and university-wide **toppers**.
-- Parses real GGSIPU Internal Assessment PDFs (Apache PDFBox + regex) into a **normalised SQL schema** with views and `RANK()` window functions
+A full-stack engine that reads a university **result PDF**, extracts every subject's marks, and stores each student's internal marksheet. The **SGPA / CGPA** and subject-/college-/university-wide **topper** analytics are built (engine + SQL) and switch on once end-semester data lands.
+- Built for GGSIPU's Internal Assessment PDF format (Apache PDFBox + regex), feeding a **normalised SQL schema** with views and `RANK()` window functions
 - Takes security seriously: **PBKDF2 hashing, CSRF tokens, login lockout, upload validation, prepared statements** — because student marks are confidential
 - Ships with a **Maven wrapper** and runs on embedded **H2** out of the box, or **MySQL 8** in production (same SQL on both)
 
@@ -95,20 +95,6 @@ A full-stack engine that reads a university **result PDF**, extracts every subje
 <br/>
 
 <img src="https://streak-stats.demolab.com/?user=yugmakkar&theme=highcontrast&hide_border=true&ring=D97757&fire=D97757&currStreakLabel=D97757" alt="GitHub streak" />
-
-<br/>
-
-<img src="https://github-profile-trophy.vercel.app/?username=yugmakkar&theme=darkhub&no-frame=true&no-bg=true&margin-w=4&column=7" alt="GitHub trophies" />
-
-</div>
-
----
-
-## 💬 A random dev quote, because why not
-
-<div align="center">
-
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=highcontrast" alt="Dev quote" />
 
 </div>
 
