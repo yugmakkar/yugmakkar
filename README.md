@@ -73,6 +73,14 @@ A full-stack engine that reads a university result PDF, pulls out each subject's
 
 <img src="https://streak-stats.demolab.com/?user=yugmakkar&theme=highcontrast&hide_border=true&ring=C77DFF&fire=D97757&currStreakLabel=C77DFF" alt="GitHub streak" />
 
+<br/><br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yugmakkar/yugmakkar/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yugmakkar/yugmakkar/output/github-snake.svg" />
+  <img alt="Snake eating my contribution graph" src="https://raw.githubusercontent.com/yugmakkar/yugmakkar/output/github-snake.svg" />
+</picture>
+
 </div>
 
 ---
