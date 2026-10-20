@@ -14,7 +14,7 @@
 
 <a href="https://www.linkedin.com/in/yug-makkar/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
 <a href="mailto:yugmakkarongit@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-<a href="https://github.com/yugmakkar"><img src="https://komarev.com/ghpvc/?username=yugmakkar&label=Profile%20Views&color=1F6FEB&style=for-the-badge" alt="Profile views" /></a>
+<a href="https://github.com/yugmakkar?tab=followers"><img src="https://img.shields.io/github/followers/yugmakkar?style=for-the-badge&logo=github&logoColor=white&label=Followers&color=1F6FEB" alt="GitHub followers" /></a>
 
 </div>
 
