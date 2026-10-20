@@ -1,16 +1,20 @@
 <div align="center">
 
-<img src="assets/hero.svg" alt="Yug - creative thinker and AI leverager" width="100%" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg" />
+  <img src="assets/hero-dark.svg" alt="Yug - creative thinker and AI leverager" width="100%" />
+</picture>
 
 <br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=C77DFF&center=true&vCenter=true&width=620&lines=creative+thinker;AI+leverager;I+turn+ideas+into+working+products;I+use+AI+to+build+fast" alt="what I do" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=58A6FF&center=true&vCenter=true&width=620&lines=creative+thinker;AI+leverager;I+turn+ideas+into+working+products;I+use+AI+to+build+fast" alt="what I do" />
 
 <br/>
 
 <a href="https://www.linkedin.com/in/yug-makkar/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
 <a href="mailto:yugmakkarongit@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-<img src="https://komarev.com/ghpvc/?username=yugmakkar&label=Profile%20views&color=C77DFF&style=for-the-badge" alt="Profile views" />
+<a href="https://github.com/yugmakkar"><img src="https://komarev.com/ghpvc/?username=yugmakkar&label=Profile%20Views&color=1F6FEB&style=for-the-badge" alt="Profile views" /></a>
 
 </div>
 
@@ -66,12 +70,21 @@ A full-stack engine that reads a university result PDF, pulls out each subject's
 
 <div align="center">
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=yugmakkar&show_icons=true&theme=highcontrast&hide_border=true&include_all_commits=true&count_private=true&icon_color=C77DFF&title_color=C77DFF" alt="Yug's GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yugmakkar&layout=compact&theme=highcontrast&hide_border=true&title_color=C77DFF&langs_count=8" alt="Top languages" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=yugmakkar&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&bg_color=00000000&theme=github_dark&title_color=58A6FF&icon_color=58A6FF&text_color=C9D1D9" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=yugmakkar&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&bg_color=00000000&theme=default&title_color=0969DA&icon_color=0969DA&text_color=1F2328" alt="Yug's GitHub stats" />
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api/top-langs/?username=yugmakkar&layout=compact&hide_border=true&langs_count=8&bg_color=00000000&theme=github_dark&title_color=58A6FF&text_color=C9D1D9" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yugmakkar&layout=compact&hide_border=true&langs_count=8&bg_color=00000000&theme=default&title_color=0969DA&text_color=1F2328" alt="Top languages" />
+</picture>
 
 <br/>
 
-<img src="https://streak-stats.demolab.com/?user=yugmakkar&theme=highcontrast&hide_border=true&ring=C77DFF&fire=D97757&currStreakLabel=C77DFF" alt="GitHub streak" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://streak-stats.demolab.com/?user=yugmakkar&hide_border=true&background=00000000&ring=58A6FF&fire=58A6FF&currStreakLabel=58A6FF&sideLabels=C9D1D9&currStreakNum=C9D1D9&sideNums=C9D1D9&dates=8B949E&dayLabels=8B949E&stroke=30363D" />
+  <img src="https://streak-stats.demolab.com/?user=yugmakkar&hide_border=true&background=00000000&ring=0969DA&fire=0969DA&currStreakLabel=0969DA&sideLabels=1F2328&currStreakNum=1F2328&sideNums=1F2328&dates=656D76&dayLabels=656D76&stroke=D0D7DE" alt="GitHub streak" />
+</picture>
 
 <br/><br/>
 
