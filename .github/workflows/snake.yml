@@ -1,4 +1,4 @@
-name: Gotham patrol (snake + surveillance report)
+name: Gotham patrol (surveillance report)
 
 on:
   # redraw every 12 hours
@@ -27,14 +27,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: Snake eats the contribution graph (amber on dark, amber on light)
-        uses: Platane/snk/svg-only@v3
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake.svg?color_snake=#B8860B&color_dots=#EBEDF0,#FFE8A3,#FFD45C,#E6AC00,#B8860B
-            dist/github-snake-dark.svg?color_snake=#FFC300&color_dots=#161B22,#4D3B00,#8C6A00,#CC9A00,#FFC300
 
       - name: Draw the surveillance report (live stats card)
         continue-on-error: true

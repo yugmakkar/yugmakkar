@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/gotham-hero.svg" width="100%" alt="Yug Makkar. Not the hero your repo deserves. The one it needs." />
+<img src="assets/gotham-hero.svg" width="100%" alt="Yug Makkar. Not the hero your repo deserves. The one it needs. A cinematic night over Gotham with the signal in the sky." />
 
 <br/><br/>
 
@@ -54,16 +54,6 @@ I'm Yug, a creative thinker and AI leverager. I start from the problem, not the 
 
 <img src="https://raw.githubusercontent.com/yugmakkar/yugmakkar/output/surveillance.svg" width="100%" alt="Surveillance report: contributions, streaks, languages, and a contribution skyline. Redrawn every 12 hours." />
 
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yugmakkar/yugmakkar/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/yugmakkar/yugmakkar/output/github-snake.svg" />
-  <img alt="Snake eating my contribution graph" src="https://raw.githubusercontent.com/yugmakkar/yugmakkar/output/github-snake.svg" />
-</picture>
-
-</div>
-
 <br/>
 
 <img src="assets/banner-5.svg" width="100%" alt="Light the Signal (contact)" />
@@ -80,6 +70,6 @@ I'm Yug, a creative thinker and AI leverager. I start from the problem, not the 
 
 <br/>
 
-<img src="assets/footer.svg" width="100%" alt="The city sleeps. The commits don't." />
+<img src="assets/footer.svg" width="100%" alt="Why so serious? It's only production." />
 
 </div>

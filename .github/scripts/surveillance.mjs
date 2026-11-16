@@ -4,7 +4,7 @@
 //
 // usage: node surveillance.mjs <out.svg> [--offline]
 // env:   GITHUB_TOKEN, GH_LOGIN, MOCK_JSON (optional path to a saved API response)
-import { readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -58,6 +58,7 @@ function frame(doc, H, label, body, style, extraDefs = "") {
     `<defs><clipPath id="cp"><rect width="${W}" height="${H}" rx="14"/></clipPath>` +
     `<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28,0 L0,0 0,28" fill="none" stroke="#fff" stroke-opacity=".03"/></pattern>` +
     `<linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D3D9E1"/><stop offset=".46" stop-color="#6E7783"/><stop offset=".52" stop-color="#2B313A"/><stop offset="1" stop-color="#58616D"/></linearGradient>` +
+    `<linearGradient id="sweep" x1="0" x2="1"><stop offset="0" stop-color="#7FB8D6" stop-opacity="0"/><stop offset="1" stop-color="#7FB8D6" stop-opacity=".22"/></linearGradient>` +
     `<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${PANEL}"/><stop offset="1" stop-color="#121A28"/></linearGradient>` +
     extraDefs + doc.defsXml() + `<style>${style}</style></defs>` +
     `<g clip-path="url(#cp)"><rect width="${W}" height="${H}" fill="url(#sky)"/><rect width="${W}" height="${H}" fill="url(#grid)"/>${body}</g>` +
@@ -186,6 +187,9 @@ function render(s) {
     }
   });
   body += `<g class="city"><g>${city}</g><g fill="#232C3C">${dark}</g><g fill="${AMBER}">${lit}</g></g>`;
+  // sonar sweep across the city, a nod to the surveillance machine
+  body += `<g class="sonar"><rect x="-28" y="${sy + 12}" width="60" height="${base - sy - 12}" fill="url(#sweep)"/>` +
+    `<rect x="30" y="${sy + 12}" width="1.5" height="${base - sy - 12}" fill="#CFE6F2" opacity=".7"/></g>`;
   body += `<line x1="32" y1="${base + 0.5}" x2="${W - 32}" y2="${base + 0.5}" stroke="${LINE}"/>`;
   body += doc.text("12 months ago", "mono", 12, 32, base + 17, { fill: MUTED }) + doc.text("this week", "mono", 12, W - 32, base + 17, { fill: MUTED, anchor: "end" });
 
@@ -193,7 +197,8 @@ function render(s) {
     ".tile{animation:up .7s cubic-bezier(.2,.8,.2,1) both}@keyframes up{from{opacity:0;transform:translateY(10px)}}" +
     ".lang{transform-box:fill-box;transform-origin:left;animation:gx .9s cubic-bezier(.2,.8,.2,1) both}@keyframes gx{from{transform:scaleX(0)}}" +
     `.city{transform-box:fill-box;transform-origin:bottom;animation:rise 1.6s cubic-bezier(.2,.8,.2,1) .4s both}@keyframes rise{from{transform:scaleY(0)}}` +
-    ".beacon{animation:bk 1.2s steps(1) infinite}@keyframes bk{50%{opacity:.15}}";
+    ".beacon{animation:bk 1.2s steps(1) infinite}@keyframes bk{50%{opacity:.15}}" +
+    `.sonar{animation:sn 6s cubic-bezier(.45,0,.55,1) 2s infinite;opacity:0}@keyframes sn{0%{opacity:0;transform:translateX(32px)}8%{opacity:1}92%{opacity:1}100%{opacity:0;transform:translateX(${W - 64}px)}}`;
   const label = `Surveillance report for ${LOGIN}: top language ${s.top[0] ? s.top[0][0] : "none"}, ${s.langCount} languages, ${s.repos} public repos, ${s.stars} stars, ${s.followers} followers, on GitHub since ${s.since}, plus a skyline of weekly contributions.`;
   return frame(doc, H, label, body, style);
 }
@@ -219,5 +224,6 @@ if (process.argv.includes("--offline")) {
     svg = offline(e && e.message ? e.message : String(e));
   }
 }
+mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, svg);
 console.log(`wrote ${OUT} (${svg.length} bytes)`);
