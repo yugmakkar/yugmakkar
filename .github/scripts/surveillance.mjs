@@ -166,27 +166,33 @@ function render(s) {
 
   // contribution skyline: one building per week
   const sy = 398, base = H - 26, maxH = base - sy - 36;
-  body += doc.text("THE CITY OF COMMITS · ONE BUILDING PER WEEK", "monob", 13, 32, sy, { fill: AMBER, ls: 1.5 });
+  body += doc.text("THE CITY OF COMMITS · ONE BUILDING PER WEEK · LIT WINDOWS = CONTRIBUTIONS", "monob", 13, 32, sy, { fill: AMBER, ls: 1.5 });
   const weeks = s.weeks.slice(-53);
   const max = Math.max(...weeks, 1);
   const step = (W - 64) / weeks.length, bwid = Math.max(step - 3, 3);
-  let city = "", lit = "";
+  let city = "", lit = "", dark = "";
   weeks.forEach((c, n) => {
-    const h = c === 0 ? 5 : 12 + Math.sqrt(c / max) * (maxH - 12);
+    // every week is a building; its height is part skyline, part activity
+    const seed = Math.abs(Math.sin((n + 1) * 12.9898) * 43758.5453) % 1;
+    const skyline = maxH * (0.32 + 0.4 * seed);
+    const active = c === 0 ? 0 : 14 + Math.sqrt(c / max) * (maxH - 14);
+    const h = Math.max(skyline, active);
     const x = 32 + n * step, y = base - h;
-    city += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bwid.toFixed(1)}" height="${h.toFixed(1)}" fill="${c ? "#1B2333" : "#121823"}"/>`;
-    // light up windows in proportion to that week's commits
-    const rows = Math.floor((h - 8) / 9);
-    const on = Math.min(rows, Math.ceil(Math.sqrt(c) * 1.6));
-    for (let r = 0; r < on; r++) {
-      const wy = base - 8 - r * 9;
-      lit += `<rect x="${(x + bwid / 2 - 2).toFixed(1)}" y="${wy.toFixed(1)}" width="4" height="5" opacity="${(0.45 + 0.5 * ((r * 7 + n) % 5) / 4).toFixed(2)}"/>`;
+    city += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bwid.toFixed(1)}" height="${h.toFixed(1)}" fill="${c ? "#1D2638" : "#141A26"}"/>`;
+    // windows: one lit window per contribution-ish, the rest stay dark
+    const rows = Math.max(1, Math.floor((h - 8) / 9));
+    const on = c === 0 ? 0 : Math.min(rows, Math.max(1, Math.ceil(Math.sqrt(c) * 1.8)));
+    for (let r = 0; r < rows; r++) {
+      const wy = base - 9 - r * 9;
+      const wx = (x + bwid / 2 - 2).toFixed(1);
+      if (r < on) lit += `<rect x="${wx}" y="${wy.toFixed(1)}" width="4" height="5" opacity="${(0.5 + 0.5 * ((r * 7 + n) % 5) / 4).toFixed(2)}"/>`;
+      else dark += `<rect x="${wx}" y="${wy.toFixed(1)}" width="4" height="5"/>`;
     }
     if (n === weeks.length - 1) {
       body += `<circle class="beacon" cx="${(x + bwid / 2).toFixed(1)}" cy="${(y - 7).toFixed(1)}" r="3.2" fill="${AMBER}"/>`;
     }
   });
-  body += `<g class="city"><g>${city}</g><g fill="${AMBER}">${lit}</g></g>`;
+  body += `<g class="city"><g>${city}</g><g fill="#232C3C">${dark}</g><g fill="${AMBER}">${lit}</g></g>`;
   body += `<line x1="32" y1="${base + 0.5}" x2="${W - 32}" y2="${base + 0.5}" stroke="${LINE}"/>`;
   body += doc.text("12 months ago", "mono", 12, 32, base + 17, { fill: MUTED }) + doc.text("this week", "mono", 12, W - 32, base + 17, { fill: MUTED, anchor: "end" });
 
