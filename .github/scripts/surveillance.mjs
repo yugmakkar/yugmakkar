@@ -52,12 +52,12 @@ class Doc {
 
 const W = 840;
 const fmt = (n) => n.toLocaleString("en-US");
-const days = (n) => `${n} ${n === 1 ? "DAY" : "DAYS"}`;
 
 function frame(doc, H, label, body, style, extraDefs = "") {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${label}">` +
     `<defs><clipPath id="cp"><rect width="${W}" height="${H}" rx="14"/></clipPath>` +
     `<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28,0 L0,0 0,28" fill="none" stroke="#fff" stroke-opacity=".03"/></pattern>` +
+    `<linearGradient id="steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D3D9E1"/><stop offset=".46" stop-color="#6E7783"/><stop offset=".52" stop-color="#2B313A"/><stop offset="1" stop-color="#58616D"/></linearGradient>` +
     `<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${PANEL}"/><stop offset="1" stop-color="#121A28"/></linearGradient>` +
     extraDefs + doc.defsXml() + `<style>${style}</style></defs>` +
     `<g clip-path="url(#cp)"><rect width="${W}" height="${H}" fill="url(#sky)"/><rect width="${W}" height="${H}" fill="url(#grid)"/>${body}</g>` +
@@ -65,7 +65,7 @@ function frame(doc, H, label, body, style, extraDefs = "") {
 }
 
 function header(doc, right) {
-  return `<path d="${BAT}" transform="translate(52,44) scale(.26)" fill="${AMBER}"/>` +
+  return `<path d="${BAT}" transform="translate(54,44) scale(.3)" fill="url(#steel)" stroke="#E6EAEF" stroke-opacity=".85" stroke-width="1.6"/>` +
     doc.text("SURVEILLANCE REPORT", "bebas", 34, 84, 56, { fill: TXT, ls: 2.5 }) +
     doc.text(right, "mono", 13, W - 32, 52, { fill: MUTED, anchor: "end" }) +
     `<line x1="32" y1="76" x2="${W - 32}" y2="76" stroke="${LINE}"/>`;
@@ -73,7 +73,7 @@ function header(doc, right) {
 
 // ---------- data ----------
 const QUERY = `query($login:String!){user(login:$login){
-  followers{totalCount}
+  createdAt followers{totalCount}
   repositories(first:100,ownerAffiliations:OWNER,isFork:false,privacy:PUBLIC){
     totalCount nodes{stargazerCount languages(first:8,orderBy:{field:SIZE,direction:DESC}){edges{size node{name}}}}}
   contributionsCollection{contributionCalendar{totalContributions weeks{contributionDays{contributionCount date}}}}}}`;
@@ -96,14 +96,6 @@ async function load() {
 function analyse(json) {
   const u = json.data.user;
   const cal = u.contributionsCollection.contributionCalendar;
-  const days = cal.weeks.flatMap((w) => w.contributionDays);
-  // current streak: today may still be empty, so it doesn't break the streak
-  let cur = 0;
-  let i = days.length - 1;
-  if (i >= 0 && days[i].contributionCount === 0) i--;
-  for (; i >= 0 && days[i].contributionCount > 0; i--) cur++;
-  let best = 0, run = 0;
-  for (const d of days) { run = d.contributionCount > 0 ? run + 1 : 0; best = Math.max(best, run); }
   const repos = u.repositories.nodes;
   const stars = repos.reduce((s, r) => s + r.stargazerCount, 0);
   const langs = new Map();
@@ -112,8 +104,9 @@ function analyse(json) {
   const top = [...langs].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n, s]) => [n, s / total]);
   const weeks = cal.weeks.map((w) => w.contributionDays.reduce((s, d) => s + d.contributionCount, 0));
   return {
-    contributions: cal.totalContributions, cur, best, repos: u.repositories.totalCount, stars,
-    followers: u.followers.totalCount, top, weeks, activeDays: days.filter((d) => d.contributionCount > 0).length,
+    contributions: cal.totalContributions, repos: u.repositories.totalCount, stars,
+    followers: u.followers.totalCount, top, weeks, langCount: langs.size,
+    since: (u.createdAt || "").slice(0, 4) || "—",
   };
 }
 
@@ -126,12 +119,12 @@ function render(s) {
 
   // stat tiles, 3 x 2
   const tiles = [
-    [fmt(s.contributions), "CONTRIBUTIONS · 1Y"],
-    [days(s.cur), "CURRENT STREAK"],
-    [days(s.best), "LONGEST STREAK"],
-    [fmt(s.activeDays), "ACTIVE DAYS · 1Y"],
+    [(s.top[0] ? s.top[0][0] : "—").toUpperCase(), "TOP LANGUAGE"],
+    [fmt(s.langCount), "LANGUAGES IN THE ARSENAL"],
     [fmt(s.repos), "PUBLIC REPOS"],
     [fmt(s.stars), "STARS EARNED"],
+    [fmt(s.followers), "FOLLOWERS"],
+    [s.since, "ON GITHUB SINCE"],
   ];
   const tw = (W - 64 - 2 * 16) / 3, th = 86;
   tiles.forEach(([v, l], n) => {
@@ -139,7 +132,7 @@ function render(s) {
     body += `<g class="tile" style="animation-delay:${(0.15 + n * 0.1).toFixed(2)}s">` +
       `<rect x="${x}" y="${y}" width="${tw}" height="${th}" rx="10" fill="#0E131C" stroke="${LINE}"/>` +
       `<rect x="${x}" y="${y + 16}" width="3" height="${th - 32}" fill="${AMBER}"/>` +
-      doc.text(v, "bebas", 46, x + 22, y + 52, { fill: n === 1 ? AMBER : TXT, ls: 1 }) +
+      doc.text(v, "bebas", Math.min(46, (46 * (tw - 44)) / doc.width(v, "bebas", 46, 1)), x + 22, y + 52, { fill: n === 0 ? AMBER : TXT, ls: 1 }) +
       doc.text(l, "mono", 13, x + 23, y + 74, { fill: MUTED, ls: 0.5 }) + `</g>`;
   });
 
@@ -201,7 +194,7 @@ function render(s) {
     ".lang{transform-box:fill-box;transform-origin:left;animation:gx .9s cubic-bezier(.2,.8,.2,1) both}@keyframes gx{from{transform:scaleX(0)}}" +
     `.city{transform-box:fill-box;transform-origin:bottom;animation:rise 1.6s cubic-bezier(.2,.8,.2,1) .4s both}@keyframes rise{from{transform:scaleY(0)}}` +
     ".beacon{animation:bk 1.2s steps(1) infinite}@keyframes bk{50%{opacity:.15}}";
-  const label = `Surveillance report for ${LOGIN}: ${s.contributions} contributions in the last year, current streak ${s.cur} days, longest streak ${s.best} days, ${s.repos} public repos, ${s.stars} stars.`;
+  const label = `Surveillance report for ${LOGIN}: top language ${s.top[0] ? s.top[0][0] : "none"}, ${s.langCount} languages, ${s.repos} public repos, ${s.stars} stars, ${s.followers} followers, on GitHub since ${s.since}, plus a skyline of weekly contributions.`;
   return frame(doc, H, label, body, style);
 }
 
