@@ -40,11 +40,15 @@ I'm Yug, a creative thinker and AI leverager. I start from the problem, not the 
 
 <img src="assets/banner-3.svg" width="100%" alt="Case Files (projects)" />
 
-<a href="https://github.com/yugmakkar/Stock-Market-Predictor"><img src="assets/case-001.svg" width="100%" alt="Case file 001: Bharat Stock Predictor" /></a>
+<a href="https://yugmakkar.github.io/jarvis/"><img src="assets/case-jarvis.svg" width="100%" alt="Case file 001: Jarvis, a free browser voice assistant" /></a>
+
+**[Jarvis](https://yugmakkar.github.io/jarvis/)** ([source](https://github.com/yugmakkar/jarvis)): a free, open-source voice assistant that wakes to its name, answers out loud, and pulls live answers from the web. It runs entirely in your browser, with no account, no API key, and no server. [Try it now](https://yugmakkar.github.io/jarvis/app/).
+
+<a href="https://github.com/yugmakkar/Stock-Market-Predictor"><img src="assets/case-001.svg" width="100%" alt="Case file 002: Bharat Stock Predictor" /></a>
 
 **[Bharat Stock Predictor](https://github.com/yugmakkar/Stock-Market-Predictor)**: forecasts NSE-listed Indian stocks from free public data, with a transparent 20-day price range, plain-English signals, and honest backtests.
 
-<a href="https://github.com/yugmakkar/ggsipu-result-analysis"><img src="assets/case-002.svg" width="100%" alt="Case file 002: GGSIPU Result Analysis and CGPA Calculator" /></a>
+<a href="https://github.com/yugmakkar/ggsipu-result-analysis"><img src="assets/case-002.svg" width="100%" alt="Case file 003: GGSIPU Result Analysis and CGPA Calculator" /></a>
 
 **[GGSIPU Result Analysis & CGPA Calculator](https://github.com/yugmakkar/ggsipu-result-analysis)**: reads a university result PDF and stores each student's marksheet. SGPA, CGPA, and topper analytics switch on once end-semester data is available.
 
